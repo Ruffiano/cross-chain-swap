@@ -1,0 +1,14 @@
+.DS_Store
+.idea
+package-lock.json
+node_modules/
+config/private/
+config
+config
+**/.env
+*.swp
+tags
+tags.*
+build
+**/build
+dist
