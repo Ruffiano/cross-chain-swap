@@ -1,0 +1,25 @@
+{
+  "name": "atomic-swap-eth-bsc-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^4.1.0",
+    "@truffle/hdwallet-provider": "^1.4.0",
+    "bn.js": "^4.11.8",
+    "chai": "^4.2.0",
+    "dotenv": "^6.2.0",
+    "ganache-cli": "^6.4.1",
+    "openzeppelin-test-helpers": "^0.1.2",
+    "solhint": "^2.0.0"
+  },
+  "dependencies": {
+    "truffle": "^5.3.8"
+  }
+}
