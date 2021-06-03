@@ -19,6 +19,9 @@
  */
 
  const HDWalletProvider = require('@truffle/hdwallet-provider');
+ const config = require('config');
+ const networkConfig = config.get('Network');
+
  // const infuraKey = "fj4jll3k.....";
  //
  // const fs = require('fs');
@@ -42,11 +45,19 @@
      // tab if you use this network and you must also set the `host`, `port` and `network_id`
      // options below to some value.
      //
-     // development: {
-     //  host: "127.0.0.1",     // Localhost (default: none)
-     //  port: 8545,            // Standard Ethereum port (default: none)
-     //  network_id: "*",       // Any network (default: none)
-     // },
+     development: {
+      host: networkConfig.interface.network_url,
+      port: networkConfig.interface.port,
+      network_id: networkConfig.interface.network_id // Match any network id
+    },
+
+     coverage: {
+      host: networkConfig.coverage.host,
+      network_id: networkConfig.coverage.network_id,
+      port: networkConfig.coverage.port,         // <-- If you change this, also set the port option in .solcover.js.
+      gas: 0xfffffffffff, // <-- Use this high gas value
+      gasPrice: 0x01      // <-- Use this low gas price
+    },
      // Another network with more advanced options...
      // advanced: {
      // port: 8777,             // Custom port
@@ -59,35 +70,16 @@
      // Useful for deploying to a public network.
      // NB: It's important to wrap the provider as a function.
      ropsten: {
-       provider: () => new HDWalletProvider({
-         privateKeys: [
-           '9be0a9ca225206d063a0f46671369d8bf61b9b742dc15877a9d595327a97d941',
-           '62cf3e343183c31d509c7eb14fe95c7f9744961c42c93be706875d489fd9e222',
-         ],
-         providerOrUrl: 'https://ropsten.infura.io/v3/2b1758a74cf249a598f13e357bb058dc'
-       }),
-       network_id: 3,       // Ropsten's id
+      provider: () => new HDWalletProvider(
+        networkConfig.interface.wallet_privateKey,
+        networkConfig.interface.network_url
+      ),
+       network_id: networkConfig.interface.network_id,       // Ropsten's id
        gas: 5500000,        // Ropsten has a lower block limit than mainnet
        confirmations: 2,    // # of confs to wait between deployments. (default: 0)
        timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
        skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-     },
- 
-     bscTest: {
-       provider: () => new HDWalletProvider({
-         privateKeys: [
-           'd552a6935e40163a3bd7996f976214a97942a7edc5e0ddfdb056662a7f32f013',
-           '949795c24baa8a42a31247214b11696f6adade7dea8f522212b80990e0785bc9',
-         ],
-         // providerOrUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
-         providerOrUrl: 'https://data-seed-prebsc-2-s3.binance.org:8545/'
-       }),
-       network_id: 97,
-       gas: 5000000,
-       confirmations: 5,
-       timeoutBlocks: 200,
-       skipDryRun: true
-     },
+     }
  
      // Useful for private networks
      // private: {

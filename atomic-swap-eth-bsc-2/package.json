@@ -4,11 +4,14 @@
   "description": "",
   "main": "truffle-config.js",
   "scripts": {
-    "test": "truffle test",
-    "compile": "truffle compile",
-    "coverage": "./node_modules/.bin/solidity-coverage",
-    "deploy-dev": "truffle deploy --network=\"development\" --reset",
-    "deploy-prod": "truffle deploy --network=\"ropsten\"",
+    "start-dev": "set NODE_ENV=development && node index.js",
+    "start-pro": "set NODE_ENV=production && node index.js",
+    "migrate-dev": "set NODE_ENV=development && truffle migrate --reset",
+    "test": "set NODE_ENV=development && truffle test",
+    "compile-dev": "set NODE_ENV=development && truffle compile",
+    "coverage": "set NODE_ENV=development && ./node_modules/.bin/solidity-coverage",
+    "deploy-dev": "set NODE_ENV=development && truffle deploy --network=\"development\" --reset",
+    "deploy-prod": "set NODE_ENV=production && truffle deploy --network=\"ropsten\"",
     "ganache": "ganache-cli"
   },
   "directories": {
@@ -25,9 +28,11 @@
     "dotenv": "^6.2.0",
     "ganache-cli": "^6.12.2",
     "openzeppelin-test-helpers": "^0.1.2",
-    "solhint": "^2.0.0"
+    "solhint": "^2.0.0",
+    "truffle": "^5.3.8"
   },
   "dependencies": {
-    "truffle": "^5.3.8"
+    "config": "^3.3.6",
+    "web3": "^1.3.6"
   }
 }

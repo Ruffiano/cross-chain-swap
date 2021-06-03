@@ -2,9 +2,8 @@
 .idea
 package-lock.json
 node_modules/
-config/private/
 config
-config
+**/config
 **/.env
 *.swp
 tags
