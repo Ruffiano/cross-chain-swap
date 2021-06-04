@@ -14,7 +14,6 @@ const timeout = 100;
 let withdrawTraderAddress = "0x6d9b4120A9AB67c0daA6D30EbF3599d2F72756bB";
 
 const init = async() => {
-    console.log('Environment: ', process.env.NODE_ENV);
     const provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
 
     const web3 = new Web3(provider);
@@ -29,29 +28,41 @@ const init = async() => {
     console.log('deployedAtomicSwapERC20.address: ', deployedAtomicSwapERC20.address)
     const ContractTokenERC20 = new web3.eth.Contract(
         abiTokenERC20.abi,             // smartContract json data
-        deployedTokenERC20.address     // smartContract address
+        deployedTokenERC20.address,     // smartContract address
+        {from: addresses[0]}
     );
     console.log('deployedTokenERC20.address: ', deployedTokenERC20.address)    
     // const ContractAtomicSwapERC20 = new web3.eth.Contract(abiAtomicSwapERC20, deployedNetwork.address, {
     //     from: address
     // });
 
+    //   event Open(bytes32 _swapID, address _withdrawTrader, bytes32 _secretLock);
+    //   event Expire(bytes32 _swapID);
+    //   event Close(bytes32 _swapID, bytes _secretKey);
+
     // var myData = myContract.methods.transfer(object.toAddress, web3.utils.toWei(object.value)).encodeABI();
-    const tokene_resp = await ContractTokenERC20.methods.approve(deployedAtomicSwapERC20.address, 10000).encodeABI(); 
-    console.log('tokene_resp: ', tokene_resp);
+    // 1. Approve atomic swap-contract 
+    const approveContractAddr = await ContractTokenERC20.methods.approve(deployedAtomicSwapERC20.address, 10000).encodeABI();
+    console.log('tokene_resp: ', approveContractAddr);
+    // 1.1 Open deal to trader    
+    const openDeal = await ContractAtomicSwapERC20.methods.open( swapID_swap, 10000, deployedTokenERC20.address, addresses[0], lock, timeout).encodeABI();
+    console.log('openDeal: ', openDeal);
 
-    ContractAtomicSwapERC20.methods.open( swapID_swap, 10000, deployedTokenERC20.address, addresses[0], lock, timeout)
-    .send({from: addresses[0]})
-    .on('receipt', function(receipt) {
-        console.log('receipt: ', receipt);
-    });
+    // 2. Check with swap-id if token-erc20 exist in deal box    
+    const checkDeal = await ContractAtomicSwapERC20.methods.check(swapID_swap).encodeABI();
+    console.log('checkDeal: ', checkDeal);
 
+    // 3. Withdraw the token-erc20 from the deal box
+    const withdrawFromDealBox = await ContractAtomicSwapERC20.methods.close(swapID_swap, key).encodeABI();
+    console.log('withdrawDealBox: ', withdrawFromDealBox);
 
-    // const result = await ContractAtomicSwapERC20.methods
-    //     .getData()
-    //     .call();
+    // 4. Get SecretKey from the Swap-contract
+    const secretKey = await ContractAtomicSwapERC20.methods.checkSecretKey(swapID_swap).encodeABI();
+    console.log('secretKey: ', secretKey);
 
-    // console.log('result: ', result);
+    // 5. Withdraw token-erc20 after expiry
+    const withdrawAfterExpiry = await ContractAtomicSwapERC20.methods.expire(swapID_expiry).encodeABI();     
+    console.log('withdrawAfterExpiry: ', withdrawAfterExpiry);    
 }
 
 init();
