@@ -11,3 +11,4 @@ tags.*
 build
 **/build
 dist
+truffle-config.js
