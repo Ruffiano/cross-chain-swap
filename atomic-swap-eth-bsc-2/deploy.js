@@ -6,8 +6,8 @@ const AtomicSwapEther = require('./build/contracts/AtomicSwapEther.json');
 const TestERC20 = require('./build/contracts/TestERC20.json');
 const Test2ERC20 = require('./build/contracts/Test2ERC20.json');
 
-const deployer_address = '0x7Cb62c64d97070f654f5f6899D00AF10842fBcB7';
-const privateKey = '9be0a9ca225206d063a0f46671369d8bf61b9b742dc15877a9d595327a97d941';
+const deployer_address = '';
+const privateKey = '';
 
 const init = async() => {
     const provider = new HDWalletProvider(
