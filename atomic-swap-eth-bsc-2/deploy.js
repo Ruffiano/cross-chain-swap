@@ -1,45 +1,108 @@
 const Web3 = require('web3');
-const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const AtomicSwapERC20 = require('./build/contracts/AtomicSwapERC20.json');
 const AtomicSwapEther = require('./build/contracts/AtomicSwapEther.json');
 const TestERC20 = require('./build/contracts/TestERC20.json');
 const Test2ERC20 = require('./build/contracts/Test2ERC20.json');
 
-const deployer_address = '';
-const privateKey = '';
+const config = require('./config/production.json');
 
-const init = async() => {
-    const provider = new HDWalletProvider(
-        privateKey,
-        'https://ropsten.infura.io/v3/2b1758a74cf249a598f13e357bb058dc'
-    );
+const deployer_address = config.Network.interface.wallet_address;
+const privateKey = config.Network.interface.wallet_privateKey;
 
-    const web3 = new Web3(provider);
-    
-    console.log('Attempting to deploy from account:', address);
-    const incrementer = new web3.eth.Contract(abi);
+const provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/2b1758a74cf249a598f13e357bb058dc');
+const web3 = new Web3(provider);
+
+const ContractAtomicSwapERC20 = async() => {
+    console.log('Attempting to deploy from account:', deployer_address);
+    const incrementer = new web3.eth.Contract(AtomicSwapERC20.abi);
     const incrementerTx = incrementer.deploy({
-          data: bytecode,
+          data: AtomicSwapERC20.bytecode,
           arguments: [5],
        });
-    const createTransaction = await web3.eth.accounts.signTransaction(
+    const createTransaction = await web3.eth.accounts.signTransaction (
           {
-             from: address,
+             from: deployer_address,
              data: incrementerTx.encodeABI(),
-             gas: '4294967295',
+             gas: 5500000,
           },
-          privKey
+          privateKey
        );
     const createReceipt = await web3.eth.sendSignedTransaction(
           createTransaction.rawTransaction
        );
-       console.log('Contract deployed at address', createReceipt.contractAddress);
-
+       console.log('Contract AtomicSwapERC20: ', createReceipt.contractAddress);
+       return createReceipt; 
 }
 
-init();
+const ContractAtomicSwapEther = async() => {
+    console.log('Attempting to deploy from account:', deployer_address);
+    const incrementer = new web3.eth.Contract(AtomicSwapEther.abi);
+    const incrementerTx = incrementer.deploy({
+          data: AtomicSwapEther.bytecode,
+          arguments: [5],
+       });
+    const createTransaction = await web3.eth.accounts.signTransaction (
+          {
+             from: deployer_address,
+             data: incrementerTx.encodeABI(),
+             gas: 5500000,
+          },
+          privateKey
+       );
+    const createReceipt = await web3.eth.sendSignedTransaction (
+          createTransaction.rawTransaction
+       );
+    console.log('Contract AtomicSwapEther: ', createReceipt.contractAddress);
+    return createReceipt;
+}
 
+const ContractTestERC20 = async() => {
+    console.log('Attempting to deploy from account:', deployer_address);
+    const incrementer = new web3.eth.Contract(TestERC20.abi);
+    const incrementerTx = await incrementer.deploy({
+          data: TestERC20.bytecode
+       });
+    const createTransaction = await web3.eth.accounts.signTransaction (
+          {
+             from: deployer_address,
+             data: incrementerTx.encodeABI(),
+             gas: 5500000,
+          },
+          privateKey
+       );
+    const createReceipt = await web3.eth.sendSignedTransaction (
+          createTransaction.rawTransaction
+       );
+    console.log('Contract TestERC20: ', createReceipt.contractAddress);
+    return createReceipt;
+}
+
+const ContractTest2ERC20 = async() => {
+    console.log('Attempting to deploy from account:', deployer_address);
+    const incrementer = new web3.eth.Contract(Test2ERC20.abi);
+    const incrementerTx = incrementer.deploy({
+          data: Test2ERC20.bytecode,
+       });
+    const createTransaction = await web3.eth.accounts.signTransaction (
+          {
+             from: deployer_address,
+             data: incrementerTx.encodeABI(),
+             gas: 5500000,
+          },
+          privateKey
+       );
+    const createReceipt = await web3.eth.sendSignedTransaction (
+          createTransaction.rawTransaction
+       );
+    console.log('Contract Test2ERC20: ', createReceipt.contractAddress);
+    return createReceipt;
+}
+
+// AtomicSwapERC20();
+// ContractAtomicSwapEther();
+// ContractTestERC20();
+ContractTest2ERC20();
 
 
     // let contractAtomicSwapERC20 = new web3.eth.Contract(
