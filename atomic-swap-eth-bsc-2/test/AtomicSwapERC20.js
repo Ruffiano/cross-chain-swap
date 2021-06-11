@@ -22,7 +22,7 @@ contract('Cross Chain Atomic Swap with ERC20', (accounts) => {
     const swap = await atomicSwap.deployed();
     const token = await testERC20.deployed();
     const result  = await swap.check(swapID_swap);
-
+    console.log('result: ', result);
     assert.equal(result[1].toNumber(),10000);
     assert.equal(result[2].toString(),token.address);
     assert.equal(result[3].toString(),accounts[0]);

@@ -42,11 +42,11 @@
      // tab if you use this network and you must also set the `host`, `port` and `network_id`
      // options below to some value.
      //
-    //  development: {
-    //   host: networkConfig.interface.network_url,
-    //   port: networkConfig.interface.port,
-    //   network_id: networkConfig.interface.network_id // Match any network id
-    // },
+    development: {
+     host: "127.0.0.1",     // Localhost (default: none)
+     port: 7545,            // Standard Ethereum port (default: none)
+     network_id: "*",       // Any network (default: none)
+    },
 
     //  coverage: {
     //   host: networkConfig.coverage.host,

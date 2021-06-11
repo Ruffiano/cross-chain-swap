@@ -5,12 +5,12 @@ const AtomicSwapEther = require('./build/contracts/AtomicSwapEther.json');
 const TestERC20 = require('./build/contracts/TestERC20.json');
 const Test2ERC20 = require('./build/contracts/Test2ERC20.json');
 
-const config = require('./config/production.json');
+const config = require('./config/development.json');
 
 const deployer_address = config.Network.interface.wallet_address;
 const privateKey = config.Network.interface.wallet_privateKey;
 
-const provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/2b1758a74cf249a598f13e357bb058dc');
+const provider = new Web3.providers.HttpProvider(config.Network.interface.network_url);
 const web3 = new Web3(provider);
 
 const ContractAtomicSwapERC20 = async() => {
@@ -99,10 +99,10 @@ const ContractTest2ERC20 = async() => {
     return createReceipt;
 }
 
-// AtomicSwapERC20();
+// ContractAtomicSwapERC20();
 // ContractAtomicSwapEther();
 // ContractTestERC20();
-ContractTest2ERC20();
+// ContractTest2ERC20();
 
 
     // let contractAtomicSwapERC20 = new web3.eth.Contract(

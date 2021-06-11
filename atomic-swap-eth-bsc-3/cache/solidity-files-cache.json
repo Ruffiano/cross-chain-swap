@@ -1,0 +1,248 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "D:\\WebStormProjects\\cross-chain-smartcontract\\atomic-swap-eth-bsc-3\\contracts\\AtomicSwapERC20.sol": {
+      "lastModificationDate": 1623378392580,
+      "contentHash": "a1e954701544a8da751780febdb9abb3",
+      "sourceName": "contracts/AtomicSwapERC20.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol",
+        "./ERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.5.1"
+      ],
+      "artifacts": [
+        "AtomicSwapERC20"
+      ]
+    },
+    "D:\\WebStormProjects\\cross-chain-smartcontract\\atomic-swap-eth-bsc-3\\node_modules\\hardhat\\console.sol": {
+      "lastModificationDate": 1623227022896,
+      "contentHash": "cc4777addd464ea56fa35b1c45df0591",
+      "sourceName": "hardhat/console.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
+      ]
+    },
+    "D:\\WebStormProjects\\cross-chain-smartcontract\\atomic-swap-eth-bsc-3\\contracts\\ERC20.sol": {
+      "lastModificationDate": 1623228473640,
+      "contentHash": "85d7eca010cc9c9081b49c8d55864691",
+      "sourceName": "contracts/ERC20.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.5.1"
+      ],
+      "artifacts": [
+        "ERC20"
+      ]
+    },
+    "D:\\WebStormProjects\\cross-chain-smartcontract\\atomic-swap-eth-bsc-3\\contracts\\AtomicSwapEther.sol": {
+      "lastModificationDate": 1623228475005,
+      "contentHash": "68c4b5a3489c2463531240a0a26216cc",
+      "sourceName": "contracts/AtomicSwapEther.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.5.1"
+      ],
+      "artifacts": [
+        "AtomicSwapEther"
+      ]
+    },
+    "D:\\WebStormProjects\\cross-chain-smartcontract\\atomic-swap-eth-bsc-3\\contracts\\Migrations.sol": {
+      "lastModificationDate": 1622521554386,
+      "contentHash": "50b3b1dc92806dc8f604fc8c5c65518f",
+      "sourceName": "contracts/Migrations.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "Migrations"
+      ]
+    },
+    "D:\\WebStormProjects\\cross-chain-smartcontract\\atomic-swap-eth-bsc-3\\contracts\\Test2ERC20.sol": {
+      "lastModificationDate": 1623228488612,
+      "contentHash": "ce1705f250c9cd6d9917b2c5d0185ac6",
+      "sourceName": "contracts/Test2ERC20.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.5.1"
+      ],
+      "artifacts": [
+        "Test2ERC20",
+        "TokenInterface"
+      ]
+    },
+    "D:\\WebStormProjects\\cross-chain-smartcontract\\atomic-swap-eth-bsc-3\\contracts\\TestERC20.sol": {
+      "lastModificationDate": 1623228493052,
+      "contentHash": "2fcdd26ccf36eefc84c4336759c89c78",
+      "sourceName": "contracts/TestERC20.sol",
+      "solcConfig": {
+        "version": "0.5.1",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.5.1"
+      ],
+      "artifacts": [
+        "TestERC20",
+        "TokenInterface"
+      ]
+    }
+  }
+}
