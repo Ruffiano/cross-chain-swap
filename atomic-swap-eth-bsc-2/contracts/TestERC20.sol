@@ -17,8 +17,8 @@ contract TokenInterface {
 
 
 contract TestERC20 is TokenInterface {
-    string public name = "BROWN TOKEN";
-    string public symbol = "BRX";
+    string public name = "CROWN TOKEN";
+    string public symbol = "CRX";
     uint8 public decimals = 18;
     uint256 public totalSupply = 100000 * 10 ** uint256(decimals);
 

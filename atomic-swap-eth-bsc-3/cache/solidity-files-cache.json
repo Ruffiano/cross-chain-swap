@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\WebStormProjects\\cross-chain-smartcontract\\atomic-swap-eth-bsc-3\\contracts\\AtomicSwapERC20.sol": {
-      "lastModificationDate": 1623378392580,
-      "contentHash": "a1e954701544a8da751780febdb9abb3",
+      "lastModificationDate": 1623648958718,
+      "contentHash": "a0af6b9160ee8bd872c08ddfceb2c106",
       "sourceName": "contracts/AtomicSwapERC20.sol",
       "solcConfig": {
         "version": "0.5.1",

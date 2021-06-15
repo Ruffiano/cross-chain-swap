@@ -103,7 +103,9 @@ contract AtomicSwapERC20 {
         emit Close(_swapID, _secretKey);
     }
 
-    function expire(bytes32 _swapID) public onlyOpenSwaps(_swapID) onlyExpirableSwaps(_swapID) {
+    function expire(bytes32 _swapID)
+    public onlyOpenSwaps(_swapID) onlyExpirableSwaps(_swapID) {
+          console.log("Contract -->> expire() ");
         // Expire the swap.
         Swap memory swap = swaps[_swapID];
         swapStates[_swapID] = States.EXPIRED;

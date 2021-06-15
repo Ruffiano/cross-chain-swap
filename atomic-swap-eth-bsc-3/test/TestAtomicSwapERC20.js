@@ -54,7 +54,7 @@ const swapID_expiry = "0xbb1556da2abf0f29379cddb06ebb4b78830adde1cf19a546eea0641
     it("Withdraw after expiry", async () => {
       setTimeout(async () => {
         await swap.expire(swapID_expiry, {from: owner.address});
-      }, 100*5)
+      }, 50000)
     })
 
   });

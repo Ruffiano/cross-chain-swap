@@ -5,7 +5,7 @@ const AtomicSwapEther = require('./build/contracts/AtomicSwapEther.json');
 const TestERC20 = require('./build/contracts/TestERC20.json');
 const Test2ERC20 = require('./build/contracts/Test2ERC20.json');
 
-const config = require('./config/development.json');
+const config = require('./config/production.json');
 
 const deployer_address = config.Network.interface.wallet_address;
 const privateKey = config.Network.interface.wallet_privateKey;

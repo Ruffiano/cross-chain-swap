@@ -2,24 +2,24 @@ const Web3 = require('web3');
 var Tx = require('ethereumjs-tx').Transaction;
 const abiAtomicSwapERC20 = require('./build/contracts/AtomicSwapERC20.json');
 const abiTokenERC20 = require('./build/contracts/TestERC20.json');
-const config = require('./config/development.json');
+const config = require('./config/production.json');
 
 const deployer_address = config.Network.interface.wallet_address;
 const privateKey = config.Network.interface.wallet_privateKey;
 const withdrawTraderAddress = config.Network.interface.withdrawTraderAddress;
 const trader_privateKey = config.Network.interface.trader_privateKey;
 
-// const lock = "0x261c74f7dd1ed6a069e18375ab2bee9afcb1095613f53b07de11829ac66cdfcc";
-// const key = "0x42a990655bffe188c9823a2f914641a32dcbb1b28e8586bd29af291db7dcd4e8";
+// const lock = "0x261c74f7dd1ed6a069e18375ab2bee9afcb1095613f53b07de11829ac66cdfcc"; // hash
+// const key = "0x42a990655bffe188c9823a2f914641a32dcbb1b28e8586bd29af291db7dcd4e8"; // seed
 
 // const swapID_swap = "0x0505915948dcd6756a8f5169e9c539b69d87d9a4b8f57cbb40867d9f91790211";
 // const swapID_expiry = "0xc3b89738306a66a399755e8535300c42b1423cac321938e7fe30b252abf8fe74";
 
-const lock = "0xd9a2bd18482392abcb3c83ceac7afed7628ea980f44a867ac62298a76c4f6fb7";
-const key = "0x3da33ef5ee2836d4248c7dd66a99098e72f8f54f355e38fcdc13eee501f9969a";
+const lock = "0x9022cd9d270ef1df49a042aa2d2c8d373ca661fb1d3f9f4836276b95424cac08";
+const key =  "0xa3388e1f511abb424756b0d5af8fdbbadc6a71b08490e06e50efd35f954d919b";
 
-const swapID_swap = "0xa784c555b3204b28b9720e5204b7377e71564617a8b586ee64bc602b8aead9d2";
-const swapID_expiry = "0xbb1556da2abf0f29379cddb06ebb4b78830adde1cf19a546eea0641ce1034492";
+const swapID_swap =   "0x5e57f701ff8e5e1684670e48074addc1b05cf71aa19dcf9fe8bede8e7a4786eb";
+const swapID_expiry = "0xa79ef81d2d11ce153be1907faad0d204636ea36a8b21ff161cf10cb463ef23ea";
 
 
 const timeout = 100;
@@ -203,13 +203,13 @@ const close = async() => {
 
 
 const expire = async() => {
-    ContractAtomicSwapERC20.methods.checkSecretKey(swapID_swap).call(deployer_address, function(err, secretkey) {
-        console.log('secretkey: ', secretkey);
-        console.log('secretkey - err: ', err); 
-    });
+    // ContractAtomicSwapERC20.methods.checkSecretKey(swapID_swap).call(deployer_address, function(err, secretkey) {
+    //     console.log('secretkey: ', secretkey);
+    //     console.log('secretkey - err: ', err); 
+    // });
 
     setTimeout(async () => {
-    const withdrawAfterExpiry = await ContractAtomicSwapERC20.methods.expire(swapID_expiry).encodeABI();     
+    const withdrawAfterExpiry = await ContractAtomicSwapERC20.methods.expire(swapID_swap).encodeABI();     
     console.log('withdrawAfterExpiry: ', withdrawAfterExpiry);   
 
         return  new Promise(
@@ -255,12 +255,10 @@ const expire = async() => {
 }
 
 
-
-
 // approve();
 
 // open();
 
 // close();
 
-expire();
+// expire();

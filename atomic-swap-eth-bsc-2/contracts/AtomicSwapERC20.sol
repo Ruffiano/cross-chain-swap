@@ -13,6 +13,7 @@ contract AtomicSwapERC20 {
         address withdrawTrader;
         bytes32 secretLock;
         bytes secretKey;
+        uint256 openingTime;
     }
 
     enum States {
@@ -66,7 +67,7 @@ contract AtomicSwapERC20 {
 
         // Store the details of the swap.
         Swap memory swap = Swap({
-            timelock: _timelock,
+            timelock: now + _timelock,
             erc20Value: _erc20Value,
             erc20Trader: msg.sender,
             erc20ContractAddress: _erc20ContractAddress,
